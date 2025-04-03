@@ -32,12 +32,12 @@ class Generator
     /**
      * Generate document
      *
-     * @param array<string,mixed>|null $bodyAttributes
+     * @param array<string,mixed> $bodyAttributes
      */
     public function document(
         string $subject,
         mixed $content,
-        ?array $bodyAttributes = null
+        array $bodyAttributes = []
     ): Markup {
         $output =
             '<!doctype html>' . "\n" .
@@ -82,12 +82,12 @@ class Generator
      * Render body tag
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function body(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::body(function (Element $el) use ($content, $tagStyles, $attributes) {
             $styles = $this->getStylesFor('body', 'text');
@@ -96,7 +96,7 @@ class Generator
                 ->addClass('email')
                 ->addStyles($styles)
                 ->addStyles($tagStyles ?? [])
-                ->setAttributes($attributes ?? []);
+                ->setAttributes($attributes);
 
             $output = $this->container(function (Element $el) use ($content) {
                 $containerStyles = $this->getStylesFor('bodyContainer');
@@ -143,12 +143,12 @@ class Generator
      * Render content block
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function contentArea(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         $styles = $this->getStylesFor('contentArea');
 
@@ -184,12 +184,12 @@ class Generator
      * Render section block
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function section(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return $this->container(
             function (Element $el) use ($content) {
@@ -207,12 +207,12 @@ class Generator
      * Render h1 heading
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function h1(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return $this->h(1, $content, $tagStyles, $attributes);
     }
@@ -221,12 +221,12 @@ class Generator
      * Render h2 heading
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function h2(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return $this->h(2, $content, $tagStyles, $attributes);
     }
@@ -235,12 +235,12 @@ class Generator
      * Render h3 heading
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function h3(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return $this->h(3, $content, $tagStyles, $attributes);
     }
@@ -249,12 +249,12 @@ class Generator
      * Render h4 heading
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function h4(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return $this->h(4, $content, $tagStyles, $attributes);
     }
@@ -263,12 +263,12 @@ class Generator
      * Render h5 heading
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function h5(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return $this->h(5, $content, $tagStyles, $attributes);
     }
@@ -277,12 +277,12 @@ class Generator
      * Render h6 heading
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function h6(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return $this->h(6, $content, $tagStyles, $attributes);
     }
@@ -291,13 +291,13 @@ class Generator
      * Render heading
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function h(
         int $size,
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::el('h' . $size . '.heading', $content, $attributes)
             ->addStyles($this->getStylesFor('h' . $size, 'heading'))
@@ -309,12 +309,12 @@ class Generator
      * Render paragraph
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function p(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::p($content, $attributes)
             ->addStyles($this->getStylesFor('p'))
@@ -325,13 +325,13 @@ class Generator
      * Render link
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function link(
         string $url,
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::a($content, $attributes)
             ->setAttribute('href', $url)
@@ -344,7 +344,7 @@ class Generator
      * Render image
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function image(
         string $url,
@@ -352,7 +352,7 @@ class Generator
         int $height,
         ?string $alt = null,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::img(null, [
             'src' => $url,
@@ -373,12 +373,12 @@ class Generator
      * Render card element
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function card(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         $output = $this->container(
             function (Element $el) use ($content) {
@@ -445,13 +445,13 @@ class Generator
      * Render container with gutter columns
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function gutter(
         string $width,
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::table([
             Html::el('tbody > tr', function () use ($content, $width, $tagStyles, $attributes) {
@@ -479,12 +479,12 @@ class Generator
      * Render smallprint element
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function smallprint(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         $output = $this->container(
             function (Element $el) use ($content) {
@@ -506,12 +506,12 @@ class Generator
      * Render foot block
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function footer(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::el(
             'div.clearContent',
@@ -535,12 +535,12 @@ class Generator
      * Container table
      *
      * @param array<string,mixed>|null $tagStyles
-     * @param array<string,mixed>|null $attributes
+     * @param array<string,mixed> $attributes
      */
     public function container(
         mixed $content,
         ?array $tagStyles = null,
-        ?array $attributes = null
+        array $attributes = []
     ): Element {
         return Html::table([
             Html::el('tbody > tr', function () use ($content, $tagStyles, $attributes) {
