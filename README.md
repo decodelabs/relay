@@ -11,8 +11,6 @@
 
 Relay provides accessible tools for creating and sending emails.
 
-_Get news and updates on the [DecodeLabs blog](https://blog.decodelabs.com)._
-
 ---
 
 ## Installation
