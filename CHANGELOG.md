@@ -1,3 +1,6 @@
+## v0.1.3 (2025-04-25)
+* Upgraded Tagged dependency
+
 ## v0.1.2 (2025-04-03)
 * Fixed attribute handling
 
