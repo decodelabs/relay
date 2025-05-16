@@ -1,11 +1,38 @@
-## v0.1.3 (2025-04-25)
-* Upgraded Tagged dependency
+# Changelog
 
-## v0.1.2 (2025-04-03)
-* Fixed attribute handling
+All notable changes to this project will be documented in this file.<br>
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v0.1.1 (2025-04-02)
-* Upgraded Tagged dependency
+### Unreleased
+--
 
-## v0.1.0 (2025-03-26)
-* Ported Mail Generator from Tagged
+---
+
+### [v0.1.3](https://github.com/decodelabs/relay/commits/v0.1.3) - 25th April 2025
+
+- Upgraded Tagged dependency
+
+[Full list of changes](https://github.com/decodelabs/relay/compare/v0.1.2...v0.1.3)
+
+---
+
+### [v0.1.2](https://github.com/decodelabs/relay/commits/v0.1.2) - 3rd April 2025
+
+- Fixed attribute handling
+
+[Full list of changes](https://github.com/decodelabs/relay/compare/v0.1.1...v0.1.2)
+
+---
+
+### [v0.1.1](https://github.com/decodelabs/relay/commits/v0.1.1) - 2nd April 2025
+
+- Upgraded Tagged dependency
+
+[Full list of changes](https://github.com/decodelabs/relay/compare/v0.1.0...v0.1.1)
+
+---
+
+### [v0.1.0](https://github.com/decodelabs/relay/commits/v0.1.0) - 26th March 2025
+
+- Ported Mail Generator from Tagged
