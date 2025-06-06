@@ -10,8 +10,8 @@
         } ],
     "require": {
         "php": "^8.4",
-        "decodelabs/exceptional": "^0.5.3",
-        "decodelabs/tagged": "^0.20"
+        "decodelabs/exceptional": "^0.6.1",
+        "decodelabs/tagged": "^0.20.1"
     },
     "require-dev": {
         "decodelabs/phpstan-decodelabs": "^0.7.0"
