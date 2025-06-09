@@ -5,9 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Unreleased
+--
+
+---
+
+### [v0.2.0](https://github.com/decodelabs/relay/commits/v0.2.0) - 9th June 2025
+
 - Implemented Mailbox identity object
 - Added MailboxList collection
 - Made Tagged an opt-in dependency
+
+[Full list of changes](https://github.com/decodelabs/relay/compare/v0.1.4...v0.2.0)
 
 ---
 
