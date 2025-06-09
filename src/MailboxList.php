@@ -39,7 +39,7 @@ class MailboxList implements
     ): void {
         foreach ($mailboxes as $mailbox) {
             $mailbox = Mailbox::create($mailbox);
-           $this->mailboxes[$mailbox->address] = $mailbox;
+            $this->mailboxes[$mailbox->address] = $mailbox;
         }
     }
 
