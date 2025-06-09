@@ -11,6 +11,7 @@ namespace DecodeLabs\Relay\Mail;
 
 use DecodeLabs\Elementary\Style\Collection as StyleList;
 use DecodeLabs\Elementary\Style\Sheet as StyleSheet;
+use DecodeLabs\Exceptional;
 use DecodeLabs\Tagged as Html;
 use DecodeLabs\Tagged\Element;
 use DecodeLabs\Tagged\Markup;
@@ -25,6 +26,12 @@ class Generator
      */
     public function __construct()
     {
+        if(!class_exists(Html::class)) {
+            throw Exceptional::ComponentUnavailable(
+                'Tagged library is required for email generation'
+            );
+        }
+
         $this->styles = new StyleSheet(static::Styles);
         $this->mobileStyles = new StyleSheet(static::MobileStyles);
     }
