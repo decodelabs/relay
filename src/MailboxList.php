@@ -31,16 +31,16 @@ class MailboxList implements
     public function __construct(
         string|Mailbox ...$mailboxes
     ) {
-        foreach ($mailboxes as $mailbox) {
-            $this->add($mailbox);
-        }
+        $this->add(...$mailboxes);
     }
 
     public function add(
-        string|Mailbox $mailbox
+        string|Mailbox ...$mailboxes
     ): void {
-        $mailbox = Mailbox::create($mailbox);
-        $this->mailboxes[$mailbox->address] = $mailbox;
+        foreach ($mailboxes as $mailbox) {
+            $mailbox = Mailbox::create($mailbox);
+           $this->mailboxes[$mailbox->address] = $mailbox;
+        }
     }
 
     public function get(
