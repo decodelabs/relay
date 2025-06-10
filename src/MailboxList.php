@@ -28,6 +28,34 @@ class MailboxList implements
      */
     protected array $mailboxes = [];
 
+    public static function parse(
+        string $mailboxes
+    ): self {
+        $list = new self();
+        $parts = explode(',', $mailboxes);
+        $prefix = null;
+
+        foreach($parts as $part) {
+            if(!str_contains($part, '@')) {
+                if ($prefix !== null) {
+                    $prefix .= ',';
+                }
+
+                $prefix .= $part;
+                continue;
+            }
+
+            if ($prefix !== null) {
+                $part = $prefix . ',' . $part;
+                $prefix = null;
+            }
+
+            $list->add($part);
+        }
+
+        return $list;
+    }
+
     public function __construct(
         string|Mailbox ...$mailboxes
     ) {
@@ -49,6 +77,11 @@ class MailboxList implements
         return $this->mailboxes[$address] ?? null;
     }
 
+    public function getFirst(): ?Mailbox
+    {
+        return $this->mailboxes[array_key_first($this->mailboxes)] ?? null;
+    }
+
     public function has(
         string|Mailbox $address
     ): bool {
@@ -67,6 +100,11 @@ class MailboxList implements
         }
 
         unset($this->mailboxes[$address]);
+    }
+
+    public function isEmpty(): bool
+    {
+        return empty($this->mailboxes);
     }
 
     public function clear(): void
