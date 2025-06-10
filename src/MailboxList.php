@@ -14,6 +14,7 @@ use Countable;
 use DecodeLabs\Nuance\Dumpable;
 use DecodeLabs\Nuance\Entity\NativeObject as NuanceEntity;
 use IteratorAggregate;
+use Stringable;
 
 /**
  * @implements IteratorAggregate<string,Mailbox>
@@ -21,6 +22,7 @@ use IteratorAggregate;
 class MailboxList implements
     IteratorAggregate,
     Countable,
+    Stringable,
     Dumpable
 {
     /**
@@ -146,6 +148,17 @@ class MailboxList implements
     public function toArray(): array
     {
         return $this->mailboxes;
+    }
+
+    public function __toString(): string
+    {
+        $output = [];
+
+        foreach ($this->mailboxes as $mailbox) {
+            $output[] = (string)$mailbox;
+        }
+
+        return implode(', ', $output);
     }
 
     public function toNuanceEntity(): NuanceEntity
