@@ -62,10 +62,11 @@ class Mailbox implements
      * @return ($mailbox is null ? null : self)
      */
     public static function create(
-        string|self|null $mailbox
+        string|self|null $mailbox,
+        ?string $name = null
     ): ?self {
         if (is_string($mailbox)) {
-            $mailbox = new self($mailbox);
+            $mailbox = new self($mailbox, $name);
         }
 
         return $mailbox;
