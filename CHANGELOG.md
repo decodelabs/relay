@@ -5,10 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Unreleased
+--
+
+---
+
+### [v0.2.1](https://github.com/decodelabs/relay/commits/v0.2.1) - 10th June 2025
+
 - Added parser to MailboxList
 - Added isEmpty to MailboxList
 - Added __toString to MailboxList
 - Added name override to Mailbox::create()
+
+[Full list of changes](https://github.com/decodelabs/relay/compare/v0.2.0...v0.2.1)
 
 ---
 
