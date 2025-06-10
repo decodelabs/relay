@@ -31,9 +31,14 @@ class MailboxList implements
     protected array $mailboxes = [];
 
     public static function parse(
-        string $mailboxes
+        ?string $mailboxes
     ): self {
         $list = new self();
+
+        if(empty($mailboxes)) {
+            return $list;
+        }
+
         $parts = explode(',', $mailboxes);
         $prefix = null;
 
@@ -52,7 +57,11 @@ class MailboxList implements
                 $prefix = null;
             }
 
-            $list->add($part);
+            $part = trim($part);
+
+            if(!empty($part)) {
+                $list->add($part);
+            }
         }
 
         return $list;
@@ -65,9 +74,14 @@ class MailboxList implements
     }
 
     public function add(
-        string|Mailbox ...$mailboxes
+        string|Mailbox|self ...$mailboxes
     ): void {
         foreach ($mailboxes as $mailbox) {
+            if($mailbox instanceof self) {
+                $this->add(...$mailbox->toArray());
+                continue;
+            }
+
             $mailbox = Mailbox::create($mailbox);
             $this->mailboxes[$mailbox->address] = $mailbox;
         }
@@ -95,13 +109,20 @@ class MailboxList implements
     }
 
     public function remove(
-        string|Mailbox $address
+        string|Mailbox|self ...$mailboxes
     ): void {
-        if($address instanceof Mailbox) {
-            $address = $address->address;
-        }
+        foreach($mailboxes as $mailbox) {
+            if($mailbox instanceof self) {
+                $this->remove(...$mailbox->toArray());
+                continue;
+            }
 
-        unset($this->mailboxes[$address]);
+            if($mailbox instanceof Mailbox) {
+                $mailbox = $mailbox->address;
+            }
+
+            unset($this->mailboxes[$mailbox]);
+        }
     }
 
     public function isEmpty(): bool
