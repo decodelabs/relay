@@ -22,7 +22,7 @@ class Mailbox implements
 
     public string $address {
         set {
-            if(str_contains($value, '<')) {
+            if (str_contains($value, '<')) {
                 $parts = explode('<', $value, 2);
                 $value = rtrim(trim((string)array_pop($parts)), '>');
                 $name = trim((string)array_shift($parts), ' "\'');

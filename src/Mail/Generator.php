@@ -26,7 +26,7 @@ class Generator
      */
     public function __construct()
     {
-        if(!class_exists(Html::class)) {
+        if (!class_exists(Html::class)) {
             throw Exceptional::ComponentUnavailable(
                 'Tagged library is required for email generation'
             );

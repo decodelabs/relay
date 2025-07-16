@@ -35,15 +35,15 @@ class MailboxList implements
     ): self {
         $list = new self();
 
-        if(empty($mailboxes)) {
+        if (empty($mailboxes)) {
             return $list;
         }
 
         $parts = explode(',', $mailboxes);
         $prefix = null;
 
-        foreach($parts as $part) {
-            if(!str_contains($part, '@')) {
+        foreach ($parts as $part) {
+            if (!str_contains($part, '@')) {
                 if ($prefix !== null) {
                     $prefix .= ',';
                 }
@@ -59,7 +59,7 @@ class MailboxList implements
 
             $part = trim($part);
 
-            if(!empty($part)) {
+            if (!empty($part)) {
                 $list->add($part);
             }
         }
@@ -77,7 +77,7 @@ class MailboxList implements
         string|Mailbox|self ...$mailboxes
     ): void {
         foreach ($mailboxes as $mailbox) {
-            if($mailbox instanceof self) {
+            if ($mailbox instanceof self) {
                 $this->add(...$mailbox->toArray());
                 continue;
             }
@@ -101,7 +101,7 @@ class MailboxList implements
     public function has(
         string|Mailbox $address
     ): bool {
-        if($address instanceof Mailbox) {
+        if ($address instanceof Mailbox) {
             $address = $address->address;
         }
 
@@ -111,13 +111,13 @@ class MailboxList implements
     public function remove(
         string|Mailbox|self ...$mailboxes
     ): void {
-        foreach($mailboxes as $mailbox) {
-            if($mailbox instanceof self) {
+        foreach ($mailboxes as $mailbox) {
+            if ($mailbox instanceof self) {
                 $this->remove(...$mailbox->toArray());
                 continue;
             }
 
-            if($mailbox instanceof Mailbox) {
+            if ($mailbox instanceof Mailbox) {
                 $mailbox = $mailbox->address;
             }
 
