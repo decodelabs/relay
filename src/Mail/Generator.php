@@ -21,9 +21,6 @@ class Generator
     public StyleSheet $styles;
     public StyleSheet $mobileStyles;
 
-    /**
-     * Init with default collections
-     */
     public function __construct()
     {
         if (!class_exists(Html::class)) {
@@ -37,8 +34,6 @@ class Generator
     }
 
     /**
-     * Generate document
-     *
      * @param array<string,mixed> $bodyAttributes
      */
     public function document(
@@ -63,9 +58,6 @@ class Generator
         return Html::raw($output);
     }
 
-    /**
-     * Render css
-     */
     public function css(): Element
     {
         $width = null;
@@ -86,8 +78,6 @@ class Generator
     }
 
     /**
-     * Render body tag
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -135,9 +125,6 @@ class Generator
     }
 
 
-    /**
-     * Render hidden preview content
-     */
     public function previewText(
         ?string $content
     ): Element {
@@ -147,8 +134,6 @@ class Generator
 
 
     /**
-     * Render content block
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -170,9 +155,6 @@ class Generator
         );
     }
 
-    /**
-     * Render banner
-     */
     public function banner(
         string $url,
         int $width,
@@ -188,8 +170,6 @@ class Generator
     }
 
     /**
-     * Render section block
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -211,8 +191,6 @@ class Generator
     }
 
     /**
-     * Render h1 heading
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -225,8 +203,6 @@ class Generator
     }
 
     /**
-     * Render h2 heading
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -239,8 +215,6 @@ class Generator
     }
 
     /**
-     * Render h3 heading
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -253,8 +227,6 @@ class Generator
     }
 
     /**
-     * Render h4 heading
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -267,8 +239,6 @@ class Generator
     }
 
     /**
-     * Render h5 heading
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -281,8 +251,6 @@ class Generator
     }
 
     /**
-     * Render h6 heading
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -295,8 +263,6 @@ class Generator
     }
 
     /**
-     * Render heading
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -313,8 +279,6 @@ class Generator
 
 
     /**
-     * Render paragraph
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -329,8 +293,6 @@ class Generator
     }
 
     /**
-     * Render link
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -348,8 +310,6 @@ class Generator
     }
 
     /**
-     * Render image
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -377,8 +337,6 @@ class Generator
 
 
     /**
-     * Render card element
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -402,9 +360,6 @@ class Generator
         return $output;
     }
 
-    /**
-     * Render list of columns
-     */
     public function columns(
         mixed ...$contents
     ): Element {
@@ -424,9 +379,6 @@ class Generator
         ]);
     }
 
-    /**
-     * Render list of rows
-     */
     public function rows(
         mixed ...$contents
     ): Element {
@@ -449,8 +401,6 @@ class Generator
     }
 
     /**
-     * Render container with gutter columns
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -483,8 +433,6 @@ class Generator
 
 
     /**
-     * Render smallprint element
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -510,8 +458,6 @@ class Generator
 
 
     /**
-     * Render foot block
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -539,8 +485,6 @@ class Generator
 
 
     /**
-     * Container table
-     *
      * @param array<string,mixed>|null $tagStyles
      * @param array<string,mixed> $attributes
      */
@@ -565,9 +509,6 @@ class Generator
     }
 
 
-    /**
-     * Merge styles for tag
-     */
     public function getStylesFor(
         string ...$tags
     ): StyleList {
