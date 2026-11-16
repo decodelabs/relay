@@ -95,7 +95,8 @@ class MailboxList implements
 
     public function getFirst(): ?Mailbox
     {
-        return $this->mailboxes[array_key_first($this->mailboxes)] ?? null;
+        $key = array_key_first($this->mailboxes);
+        return $key === null ? null : $this->mailboxes[$key];
     }
 
     public function has(
